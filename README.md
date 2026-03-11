@@ -1,2 +1,2 @@
 # DCSM
-Digital Client Satisfactory Measurement System OK SIGE SIGE SIGEEE
+Digital Client Satisfactory Measurement System OK NAAAA
