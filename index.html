@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DICT Feedback and Satisfaction System</title>
+
+<style>
+/* BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+header {
+    background-color: #001F54;
+    color: white;
+    padding: 15px 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header-left img {
+    width: 120px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.header-center {
+    text-align: left;
+}
+
+.govt-text {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid white;
+    padding-bottom: 2px;
+}
+
+.header-center h1 {
+    margin: 5px 0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.dept-text {
+    display: block;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.header-right {
+    text-align: right;
+    font-size: 14px;
+}
+
+.header-right em {
+    display: block;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.pst-time {
+    font-weight: bold;
+}
+
+/* Navigation */
+.header-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #001F54;
+    padding: 10px 0;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: 0.3s ease;
+}
+
+.header-nav a:hover {
+    background-color: #FFD700;
+    color: #004d00;
+}
+
+.login-btn {
+    background-color: #FFD700;
+    color: #004d00;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: #e6c200;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .header-right {
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-wrap: wrap;
+    }
+}
+h1 {
+        color: #FFD700;
+}
+header::after {
+    content: "";
+    display: block;
+    height: 5px;
+    background: linear-gradient(to right, #0038A8, #CE1126, #FFD700);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-section-top {
+    display: flex;
+    align-items: center;
+}
+
+.logo-section img {
+    width: 120px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.title-text h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.title-text span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* DICT Mission */
+.dict-mission {
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+/* Philippine Standard Time */
+.pst-time {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+.login-btn {
+    background-color: #FFD700;
+    padding: 8px 18px;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(to right, #0038A8, #002B5B);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 17px;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+.hero button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background-color: #FFD700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #ffdb4d;
+}
+
+/* SECTION STYLES */
+.section {
+    padding: 70px 0;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #001F54;
+    font-size: 30px;
+}
+
+.section p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+    font-size: 16px;
+    color: #444;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.feature-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    border-top: 4px solid #0038A8;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+
+.feature-box h3 {
+    margin-bottom: 12px;
+    color: #001F54;
+    font-size: 20px;
+}
+
+/* ACCOMPLISHMENTS */
+.accomplishments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.accomplishment-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.accomplishment-card:hover {
+    transform: translateY(-5px);
+}
+
+.accomplishment-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #0038A8, #001F54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+}
+
+.accomplishment-content {
+    padding: 20px;
+}
+
+.accomplishment-content h3 {
+    color: #001F54;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.accomplishment-content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.accomplishment-date {
+    color: #888;
+    font-size: 12px;
+}
+
+.upload-area {
+    border: 2px dashed #0038A8;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    background: #e8efff;
+    border-color: #FFD700;
+}
+
+.upload-area i {
+    font-size: 40px;
+    color: #0038A8;
+    margin-bottom: 15px;
+}
+
+.upload-area p {
+    color: #666;
+    font-size: 15px;
+    text-align: center;
+}
+
+.upload-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #0038A8;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* RATING */
+.rating-preview {
+    font-size: 45px;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* CALL TO ACTION */
+.cta {
+    background-color: #001F54;
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.cta h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 17px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta button {
+    margin-top: 25px;
+    padding: 12px 28px;
+    background-color: #FFD700;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.cta button:hover {
+    background-color: #ffdb4d;
+}
+
+/* FOOTER */
+footer {
+    background-color: #001035;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    nav a {
+        margin-left: 15px;
+        font-size: 15px;
+    }
+    .hero h2 {
+        font-size: 28px;
+    }
+    .section h2 {
+        font-size: 26px;
+    }
+    .cta h2 {
+        font-size: 26px;
+    }
+    .pst-time {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+.btn-primary {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background-color:  #ffdb4d;
+    color: rgb(0, 28, 139);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6a9bd3;
+    transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <!-- Left: Logo and Title -->
+        <div class="header-left" style="display: flex; align-items: center; gap: 15px;">
+            <img src="img/dictlogo.png" alt="DICT Logo" style="width: 120px;">
+            <div class="header-center">
+                <span class="govt-text">Republic of the Philippines</span>
+                <h1>DICT Digital Client Satisfaction System</h1>
+                <span class="dept-text">Department of Information and Communications Technology</span>
+            </div>
+        </div>
+
+        <!-- Right: Tagline and PST -->
+        <div class="header-right">
+            <em>"DICT of the people and for the people."</em>
+            <div class="pst-time" id="pst-time">Philippine Standard Time --:--:--</div>
+        </div>
+    </div>
+
+    <!-- Navigation (optional below header) -->
+    <nav class="header-nav">
+        <a href="about.php">About</a>
+        <a href="programs.php">Programs</a>
+        <a href="services.php">Services</a>
+        <a href="contact.php">Contact</a>
+        <a href="login.php" class="login-btn">Login</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h2>DICT Digital Client Satisfaction System</h2>
+        <p>
+            A centralized platform designed to collect, analyze, and evaluate
+            citizen feedback on DICT programs and services using structured digital tools.
+        </p>
+
+        <a href="feedback.php" class="btn-primary">Submit Feedback</a>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+    <div class="container">
+        <h2>About the System</h2>
+        <p>
+            This system enables transparent and data-driven evaluation of government services.
+            It ensures accessibility, real-time monitoring, and structured reporting to support
+            continuous service improvement.
+        </p>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" style="background-color:#f0f4f8;">
+    <div class="container">
+        <h2>Core Features</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3>Digital Feedback Forms</h3>
+                <p>Secure and accessible online submission of citizen evaluations.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Real-Time Dashboard</h3>
+                <p>Live monitoring of satisfaction metrics and feedback insights.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Data Reports & Analytics</h3>
+                <p>Structured reports for performance assessment and improvement planning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACCOMPLISHMENTS -->
+<section class="section" style="background-color:#f0f4f8;">
+    <div class="container">
+        <h2>DICT Accomplishments</h2>
+        <p>View the latest uploads and achievements from the Department</p>
+        
+        <div class="accomplishments">
+            <div class="accomplishment-card">
+                <div class="accomplishment-image">📄</div>
+                <div class="accomplishment-content">
+                    <h3>Digital Literacy Program 2025</h3>
+                    <p>Successfully conducted digital literacy training for over 50,000 citizens nationwide.</p>
+                    <span class="accomplishment-date">Uploaded: January 10, 2025</span>
+                </div>
+            </div>
+            
+            <div class="accomplishment-card">
+                <div class="accomplishment-image">🌐</div>
+                <div class="accomplishment-content">
+                    <h3>Free Wi-Fi Deployment</h3>
+                    <p>Installed 500 new free Wi-Fi hotspots in public areas across the country.</p>
+                    <span class="accomplishment-date">Uploaded: January 8, 2025</span>
+                </div>
+            </div>
+            
+            <div class="accomplishment-card">
+                <div class="accomplishment-image">📊</div>
+                <div class="accomplishment-content">
+                    <h3>e-Government Services Portal</h3>
+                    <p>Launched new online portal with 100+ government services available digitally.</p>
+                    <span class="accomplishment-date">Uploaded: January 5, 2025</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="upload-area">
+            <p>📁 Drag and drop files here or click to upload</p>
+            <p>Upload accomplishment reports, photos, and documents</p>
+            <span class="upload-btn">Choose File</span>
+        </div>
+    </div>
+</section>
+
+<!-- RATING -->
+<section class="section">
+    <div class="container">
+        <h2>Citizen Satisfaction Overview</h2>
+        <div class="rating-preview">★★★★☆</div>
+        <p>Aggregated satisfaction rating based on submitted feedback.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Department of Information and Communications Technology  
+    <br>Republic of the Philippines
+</footer>
+
+<!-- PST SCRIPT -->
+<script>
+function updatePST() {
+    const pstTimeEl = document.getElementById("pst-time");
+    const now = new Date();
+    // Convert to Philippine Standard Time (UTC+8)
+    const pst = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Manila" }));
+    
+    let hours = pst.getHours();
+    const minutes = String(pst.getMinutes()).padStart(2, '0');
+    const seconds = String(pst.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    const dateStr = pst.toLocaleDateString('en-US', options);
+    
+    pstTimeEl.textContent = `Philippine Standard Time: ${dateStr}, ${hours}:${minutes}:${seconds} ${ampm}`;
+}
+
+// Update every second
+setInterval(updatePST, 1000);
+updatePST();
+</script>
+
+</body>
+</html>
